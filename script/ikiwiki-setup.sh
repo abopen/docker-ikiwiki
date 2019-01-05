@@ -27,7 +27,7 @@ ikiwiki --changesetup wiki.setup \
 	--plugin postsparkline \
 	--plugin remove \
 	--rcs=git \
-	--set cgi_wrapper=$DESK/ikiwiki.cgi
+	--set cgi_wrapper=$DEST/ikiwiki.cgi
 
 ikiwiki --setup wiki.setup
 
