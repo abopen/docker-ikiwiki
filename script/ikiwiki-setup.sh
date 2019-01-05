@@ -11,6 +11,7 @@ ikiwiki $SRC $DEST --url=http://$VIRTUAL_HOST --dumpsetup wiki.setup
 
 # Update .setup file
 ikiwiki --changesetup wiki.setup \
+	--wikiname $WIKI_NAME \
 	--cgi \
 	--cgiurl http://$VIRTUAL_HOST/ikiwiki.cgi \
 	--adminuser admin \
