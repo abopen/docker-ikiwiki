@@ -1,6 +1,7 @@
 #! /bin/bash
 
 SRC=/wiki/source
+TMPL=/wiki/templates
 DEST=/wiki/html
 
 mkdir $SRC $DEST
@@ -27,6 +28,7 @@ ikiwiki --changesetup wiki.setup \
 	--plugin postsparkline \
 	--plugin remove \
 	--rcs=git \
+	--templatedir $TMPL \
 	--set cgi_wrapper=$DEST/ikiwiki.cgi \
 	--set theme=actiontabs
 
