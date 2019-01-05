@@ -6,8 +6,14 @@ RUN apt-get update \
 	&& apt-get install -y \
 		nginx \
 		fcgiwrap \
+		perlmagick \
 		python \
 		ikiwiki \
+		libxml-writer-perl \
+		xapian-omega \
+		libsearch-xapian-perl \
+		libdigest-sha-perl \
+		libhtml-scrubber-perl \
 		libxml-writer-perl \
 	&& rm -rf /var/lib/apt/lists/*
 #_______________________________________________________________________________
