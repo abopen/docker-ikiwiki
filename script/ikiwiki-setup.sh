@@ -27,7 +27,8 @@ ikiwiki --changesetup wiki.setup \
 	--plugin postsparkline \
 	--plugin remove \
 	--rcs=git \
-	--set cgi_wrapper=$DEST/ikiwiki.cgi
+	--set cgi_wrapper=$DEST/ikiwiki.cgi \
+	--set theme=actiontabs
 
 ikiwiki --setup wiki.setup
 
