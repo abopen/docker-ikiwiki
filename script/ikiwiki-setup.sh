@@ -8,13 +8,13 @@ mkdir $DEST
 cd /wiki
 
 # Default .setup file
-ikiwiki $SRC $DEST --url=http://127.0.0.1 --dumpsetup wiki.setup
+ikiwiki $SRC $DEST --url=https://VIRTUAL_HOST --dumpsetup wiki.setup
 
 # Update .setup file
 ikiwiki --changesetup wiki.setup \
 	--wikiname $WIKI_NAME \
 	--cgi \
-	--cgiurl http://127.0.0.1/ikiwiki.cgi \
+	--cgiurl https://$VIRTUAL_HOST/ikiwiki.cgi \
 	--adminuser admin \
 	--plugin websetup \
 	--plugin 404 \
