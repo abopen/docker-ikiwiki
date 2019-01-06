@@ -32,7 +32,6 @@ check_ikiwiki()
 
 start_nginx()
 {
-	# Set Nginx virtual host from environment variable
         echo "Setting Nginx server_name to $VIRTUAL_HOST"
 	sed -i -e \
 		"s/VIRTUAL_HOST/$VIRTUAL_HOST/g" /etc/nginx/sites-available/default

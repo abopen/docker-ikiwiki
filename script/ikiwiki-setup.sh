@@ -1,10 +1,10 @@
 #!/bin/bash
 
+REPO=/wiki/wiki.git
 SRC=/wiki/source
 TMPL=/wiki/templates
 DEST=/wiki/html
 
-mkdir $DEST
 cd /wiki
 
 # Default .setup file
@@ -30,7 +30,7 @@ ikiwiki --changesetup wiki.setup \
 	--rcs=git \
 	--templatedir $TMPL \
 	--set cgi_wrapper=$DEST/ikiwiki.cgi \
-	--set git_wrapper=/wiki/wiki.git/hooks/post-update \
+	--set git_wrapper=$REPO/hooks/post-update \
         --set reverse_proxy=1 \
 	--set theme=actiontabs
 
