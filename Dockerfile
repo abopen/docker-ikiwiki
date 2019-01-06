@@ -18,10 +18,10 @@ RUN apt-get update \
 
 COPY config/nginx.conf /etc/nginx/sites-available/default
 COPY templates/* /wiki/templates/
-COPY script/* /opt/
+COPY script/* /opt/bin/
 
-VOLUME ["/git", "/wiki"]
+VOLUME ["/import", "/wiki"]
 
 EXPOSE 80
 
-CMD ["bash", "/opt/docker-entrypoint.sh"]
+CMD ["bash", "/opt/bin/docker-entrypoint.sh"]
