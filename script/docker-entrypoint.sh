@@ -5,7 +5,7 @@ DIR=/wiki
 check_ikiwiki()
 {
 	cd $DIR
-	if [[ -d "html" && -d "source" && -f "wiki.setup" ]]
+	if [[ -d "html" && -f "wiki.setup" ]]
 	then
 		echo "Ikiwiki setup present"
 		return 0
@@ -19,8 +19,8 @@ check_ikiwiki()
 start_nginx()
 {
 	# Update Virtual Host with Environment Variable
-	sed -i -e \
-		"s/VIRTUAL_HOST/$VIRTUAL_HOST/g" /etc/nginx/sites-available/ikiwiki
+	#sed -i -e \
+	#	"s/VIRTUAL_HOST/$VIRTUAL_HOST/g" /etc/nginx/sites-available/ikiwiki
 	service fcgiwrap restart
 	nginx -g 'daemon off;'
 }

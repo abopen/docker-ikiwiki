@@ -19,14 +19,14 @@ RUN apt-get update \
 #_______________________________________________________________________________
 
 # Configuration and Scripts ____________________________________________________
-COPY config/nginx.conf /etc/nginx/sites-available/ikiwiki
+COPY config/nginx.conf /etc/nginx/sites-available/default
 COPY templates/* /wiki/templates
 COPY script/* /opt/
 RUN ln -v /etc/nginx/sites-available/ikiwiki /etc/nginx/sites-enabled/ikiwiki \
 	&& rm /etc/nginx/sites-enabled/default
 #_______________________________________________________________________________
 
-VOLUME /wiki
+VOLUME ["/git", "/wiki"]
 
 # Server _______________________________________________________________________
 EXPOSE 80
