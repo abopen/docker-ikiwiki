@@ -8,7 +8,7 @@ mkdir $DEST
 cd /wiki
 
 # Default .setup file
-ikiwiki $SRC $DEST --url=https://VIRTUAL_HOST --dumpsetup wiki.setup
+ikiwiki $SRC $DEST --url=https://$VIRTUAL_HOST --dumpsetup wiki.setup
 
 # Update .setup file
 ikiwiki --changesetup wiki.setup \
