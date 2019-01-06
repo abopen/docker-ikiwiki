@@ -1,7 +1,6 @@
 FROM debian:latest
-MAINTAINER Ankit R Gadiya <me@argp.in>
+LABEL maintainer="andrew@abopen.com"
 
-# Packages _____________________________________________________________________
 RUN apt-get update \
 	&& apt-get install -y \
 		nginx \
@@ -16,17 +15,13 @@ RUN apt-get update \
 		libhtml-scrubber-perl \
 		libxml-writer-perl \
 	&& rm -rf /var/lib/apt/lists/*
-#_______________________________________________________________________________
 
-# Configuration and Scripts ____________________________________________________
 COPY config/nginx.conf /etc/nginx/sites-available/default
-COPY templates/* /wiki/templates
+COPY templates/* /wiki/templates/
 COPY script/* /opt/
-#_______________________________________________________________________________
 
 VOLUME ["/git", "/wiki"]
 
-# Server _______________________________________________________________________
 EXPOSE 80
+
 CMD ["bash", "/opt/docker-entrypoint.sh"]
-#_______________________________________________________________________________
