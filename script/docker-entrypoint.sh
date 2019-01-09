@@ -30,22 +30,26 @@ check_ikiwiki()
 	fi
 }
 
-start_nginx()
+check_nginx()
 {
         echo "Setting Nginx server_name to $VIRTUAL_HOST"
 	sed -i -e \
 		"s/VIRTUAL_HOST/$VIRTUAL_HOST/g" /etc/nginx/sites-available/default
+}
 
-        echo "Starting Nginx"
-	service fcgiwrap restart
-	nginx -g 'daemon off;'
+run()
+{
+        echo "Starting..."
+        service fcgiwrap restart
+        supervisord -n
 }
 
 main()
 {
 	check_git
 	check_ikiwiki
-	start_nginx
+	check_nginx
+	run
 
 	exit 0
 }
