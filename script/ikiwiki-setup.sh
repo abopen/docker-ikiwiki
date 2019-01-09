@@ -7,6 +7,10 @@ DEST=/wiki/html
 
 cd /wiki
 
+tmpfile=$(mktemp)
+cat > $tmpfile <<EOF
+#!/bin/bash
+
 # Default .setup file
 ikiwiki $SRC $DEST --url=https://$VIRTUAL_HOST --dumpsetup wiki.setup
 
@@ -35,5 +39,7 @@ ikiwiki --changesetup wiki.setup \
 	--set theme=actiontabs
 
 ikiwiki --setup wiki.setup --rebuild --wrappers
+EOF
 
-chmod -R 777 /wiki
+chmod 755 $tmpfile
+su www-data -c $tmpfile
