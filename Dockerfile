@@ -18,15 +18,14 @@ RUN apt-get update \
 		supervisor \
 	&& rm -rf /var/lib/apt/lists/*
 
-# Activate the www-data account 
-RUN echo www-data:www-data | chpasswd \
+# Activate the www-data account
+RUN mkdir /var/www/.ssh \
 	&& chsh -s /bin/bash www-data
 
 # Setup SSH
-
 RUN mkdir /var/run/sshd \
 	&& chmod 700 /var/run/sshd \
-	&& sed -i 's/#PasswordAuthentication yes/PasswordAuthentication yes/' /etc/ssh/sshd_config
+	&& sed -i 's/#PubkeyAuthentication yes/PubkeyAuthentication yes/' /etc/ssh/sshd_config
 
 # Setup the Ikiwiki directory
 RUN mkdir /wiki \
