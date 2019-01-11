@@ -60,7 +60,7 @@ ikiwiki --changesetup wiki.setup \
         --plugin search
 
 [[ -n "$NO_DISCUSSION" ]] && ikiwiki --changesetup wiki.setup \
-        --discussion 0
+        --set discussion=0
 
 [[ -n "$NO_EDIT" ]] && ikiwiki --changesetup wiki.setup \
 	--disable-plugin editpage
