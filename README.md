@@ -95,8 +95,8 @@ If starting out with new content, initialise a repo with `git init`.
     -e VIRTUAL_HOST=domain.wiki \
     -e LETSENCRYPT_HOST=domain.wiki \
     -e WIKI_NAME=myWiki \
-    -p 80
-    -p 2222:22
+    -p 80 \
+    -p 2222:22 \
     abopen/ikiwiki
   ```
 
@@ -113,8 +113,8 @@ interface and/or git+SSH, you no longer need the bind mount to /import.
     -e VIRTUAL_HOST=domain.wiki \
     -e LETSENCRYPT_HOST=domain.wiki \
     -e WIKI_NAME=myWiki \
-    -p 80
-    -p 2222:22
+    -p 80 \
+    -p 2222:22 \
     abopen/ikiwiki
   ```
 
@@ -123,7 +123,7 @@ interface and/or git+SSH, you no longer need the bind mount to /import.
 Copy authorized_keys into the wiki volume.
 
   ```
-  $ docker cp authorized_keys wikivol:/wiki/authorized_keys
+  $ docker cp authorized_keys wikivol:authorized_keys
   ```
 
 Clone the repo as `www-data` and using the appropriate port, e.g.:
