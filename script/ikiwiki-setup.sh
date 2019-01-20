@@ -19,6 +19,7 @@ ikiwiki --changesetup wiki.setup \
 	--wikiname '$WIKI_NAME' \
 	--cgi \
 	--cgiurl https://$VIRTUAL_HOST/ikiwiki.cgi \
+	--templatedir $TMPL \
 	--plugin websetup \
 	--plugin 404 \
 	--plugin goodstuff \
@@ -37,7 +38,7 @@ ikiwiki --changesetup wiki.setup \
         --set reverse_proxy=1 \
 	--set theme=actiontabs
 
-# Set optional config
+# Set optional wiki config
 [[ -n "$ADMIN_EMAIL" ]] && ikiwiki --changesetup wiki.setup \
 	--adminemail $ADMIN_EMAIL
 
@@ -46,9 +47,6 @@ ikiwiki --changesetup wiki.setup \
 
 [[ -n "$LOCKED_PAGES" ]] && ikiwiki --changesetup wiki.setup \
 	--set locked_pages='$LOCKED_PAGES'
-
-[[ -n "$LOGO" ]] && ikiwiki --changesetup wiki.setup \
-	--templatedir $TMPL
 
 [[ -n "$RSS" ]] && ikiwiki --changesetup wiki.setup \
 	--rss 1
@@ -67,6 +65,14 @@ ikiwiki --changesetup wiki.setup \
 
 [[ -n "$NO_RECENTCHANGES" ]] && ikiwiki --changesetup wiki.setup \
         --disable-plugin recentchanges
+
+[[ -n "$NO_CGI" ]] && ikiwiki --changesetup wiki.setup \
+	--cgiurl '' \
+        --set cgi_wrapper='' \
+
+# Configure optional templates
+
+[[ -n "$LOGO" ]] && ln -s $TMPL/page.tmpl.LOGO $TMPL/page.tmpl
 
 # Rebuild the wiki and wrappers
 ikiwiki --setup wiki.setup --rebuild --wrappers

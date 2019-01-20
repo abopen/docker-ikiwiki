@@ -20,6 +20,7 @@ RUN apt-get update \
 
 # Activate the www-data account
 RUN mkdir /var/www/.ssh \
+        && ln -s /wiki/authorized_keys /var/www/.ssh/authorized_keys \
 	&& chsh -s /bin/bash www-data
 
 # Setup SSH
@@ -37,7 +38,7 @@ COPY config/ikiwiki_supervisord.conf /etc/supervisor/conf.d/
 COPY templates/* /wiki/templates/
 COPY script/* /opt/bin/
 
-VOLUME ["/import", "/wiki"]
+VOLUME ["/wiki"]
 
 EXPOSE 22 80
 
